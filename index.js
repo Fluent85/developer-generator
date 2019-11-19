@@ -22,49 +22,17 @@ inquirer.prompt([
     const queryUrl = `https://api.github.com/users/${response.gitHubUsername}/repos?per_page=100`;
     axios.get(queryUrl).then(function(res){
         const repos = res.data;
-        console.log(repos)
-        const numOfRepos = repos.length;
+      
+        const html = generateHTML(repos);
+        next(html);
+        
     })
 })
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-function promptUser() {
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your name?"
-    },
-    {
-      type: "input",
-      name: "location",
-      message: "Where are you from?"
-    },
-    {
-      type: "input",
-      name: "hobby",
-      message: "What is your favorite hobby?"
-    },
-    {
-      type: "input",
-      name: "food",
-      message: "What is your favorite food?"
-    },
-    {
-      type: "input",
-      name: "github",
-      message: "Enter your GitHub Username"
-    },
-    {
-      type: "input",
-      name: "linkedin",
-      message: "Enter your LinkedIn URL."
-    }
-  ]);
-}
-
 function generateHTML(answers) {
+  console.log(answers)
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +45,7 @@ function generateHTML(answers) {
 <body>
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Hi! My name is ${answers.name}</h1>
+    <h1 class="display-4">Hi! My name is ${answers.html_url}</h1>
     <p class="lead">I am from ${answers.location}.</p>
     <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
     <ul class="list-group">
@@ -90,13 +58,9 @@ function generateHTML(answers) {
 </html>`;
 }
 
-async function init() {
-  console.log("hi");
+async function next(html) {
+ 
   try {
-    const answers = await promptUser();
-
-    const html = generateHTML(answers);
-
     await writeFileAsync("index.html", html);
 
     var readHtml = fs.readFileSync('index.html', 'utf8');
@@ -113,4 +77,3 @@ async function init() {
   }
 }
 
-init();
