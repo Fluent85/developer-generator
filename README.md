@@ -51,6 +51,8 @@ https://github.com/Fluent85/developer-generator
 
 https://fluent85.github.io/developer-generator/
 
+https://drive.google.com/file/d/14hwXe2MstRr2Elv1hXTs4wO80JyddOLg/view
+
 ## Issues and future development
 
 Currently the application works, but there are some issues with pulling in work info.  I probably will work on design more, at some CSS.  Also figure out the bug with adding working info.
