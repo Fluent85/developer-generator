@@ -43,7 +43,13 @@ When preparing a report for stakeholders, it is important to have up-to-date inf
 
 ## Motivation
 
-Get better at writing code in Javascript and Node.js.   
+Get better at writing code in Javascript and Node.js. 
+
+## Links
+
+https://github.com/Fluent85/developer-generator
+
+https://fluent85.github.io/developer-generator/
 
 ## Issues and future development
 
